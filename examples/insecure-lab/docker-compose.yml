@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  audit-target:
+    image: nginx:latest
+    container_name: insecure-lab-web
+    privileged: true
+    network_mode: host
+    environment:
+      APP_MODE: production
+      DB_PASSWORD: example-password
+      API_TOKEN: example-token
+    ports:
+      - "8080:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/data:rw
