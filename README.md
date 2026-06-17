@@ -13,13 +13,6 @@ It combines Docker API inspection, optional image vulnerability scanning, risk s
 - Dangerous Linux capabilities and root execution
 - Optional image vulnerability scanning through Trivy when installed
 
-## Why it is useful
-
-- Gives fast, repeatable container security triage from the Docker API
-- Produces findings that map to CIS Docker Benchmark-style control areas
-- Creates resume-friendly evidence of security automation, not just manual review
-- Works well in local lab environments and demo stacks
-
 ## Quick start
 
 ```bash
@@ -46,10 +39,10 @@ The report includes:
 - src/csat/reporting.py renders Markdown and JSON reports
 - scripts/audit.sh offers a Bash wrapper for lab use
 
-## Resume impact
+## How it works
 
-Suggested resume wording:
-
-- Developed a Docker container security audit toolkit that inspects runtime privilege boundaries, bind mounts, exposed ports, and environment-based secrets through the Docker API.
-- Added optional image vulnerability scanning and CIS Docker Benchmark-aligned risk scoring to generate prioritized remediation findings.
-- Automated repeatable container audit reporting in Markdown and JSON for lab environments and security review workflows.
+- Connects to the local Docker daemon through the Docker API
+- Inspects container runtime settings and image metadata
+- Applies security checks for privilege, secrets, ports, mounts, and capabilities
+- Optionally scans images with Trivy when installed
+- Generates table, JSON, or Markdown output for review
